@@ -11,8 +11,21 @@ import Router from 'vue-router';
 import RouterMeta from '@/utils/router/router';
 Vue.use(Router);
 
+const Layout = (r) => require.ensure([], () => r(require('@/views/layout/layout.vue')), 'Layout');
+
+import CodeBoard from './codeBoard/codeBoard';
+
 
 const routes = [
+    {
+        path: '/',
+        name: 'layout',
+        component: Layout,
+        redirect:'/codeBoard',
+        children: [
+            ...CodeBoard,
+        ],
+    },
     {
         path: '/',
         redirect: '/',

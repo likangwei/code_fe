@@ -6,11 +6,13 @@ import * as moment from 'moment';
 import router from './routes';
 import store from './store';
 import Loading from '@/components/loading/loading';
+import Highlight from '@/utils/highlight/highlight';
 
 Vue.prototype.$moment = moment;
 
 Vue.use(Loading);
 Vue.use(ElementUI);
+Vue.use(Highlight);
 
 Vue.config.productionTip = false
 
