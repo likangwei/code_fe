@@ -7,12 +7,15 @@ import router from './routes';
 import store from './store';
 import Loading from '@/components/loading/loading';
 import Highlight from '@/utils/highlight/highlight';
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
 
 Vue.prototype.$moment = moment;
 
 Vue.use(Loading);
 Vue.use(ElementUI);
 Vue.use(Highlight);
+Vue.use(mavonEditor);
 
 Vue.config.productionTip = false
 

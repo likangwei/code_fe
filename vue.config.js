@@ -6,6 +6,8 @@
 * desc: 描述文件
 *
 * */
+const path = require('path');
+const resolve = dir => path.join(__dirname, dir);
 module.exports = {
     filenameHashing: true,
     devServer: {
@@ -21,7 +23,27 @@ module.exports = {
         disableHostCheck: true,
     },
     css: {
-        extract: false,
+        extract: true,
+        sourceMap: false,
+        loaderOptions:{
+            less: {
+                javascriptEnabled: true,
+            }
+        },
+        models: false,
     },
-    chainWebpack: (config) => {},
+    chainWebpack: config => {
+        config.resolve.symlinks(true);
+
+        config.resolve.alias
+            .set("@", resolve("src"))
+            .set("@views", resolve("src/views"))
+            .set("@store", resolve("src/store"))
+            .set("@components", resolve("src/components"));
+
+        require('vue-loader').merge(config, {
+            options: {},
+            plugins: ['less-loader'],
+        });
+    }
 }
