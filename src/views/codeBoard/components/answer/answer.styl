@@ -1,0 +1,21 @@
+.langs,.langs/deep/.el-col
+  height: 60px;
+
+.codeEdit
+  width: 100%;
+  resize none;
+  height: calc(100% - 60px);
+  .code
+    height: 100%;
+
+
+:global .CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+}
+
+:global .CodeMirror-scroll {
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
+}

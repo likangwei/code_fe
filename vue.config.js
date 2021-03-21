@@ -25,12 +25,12 @@ module.exports = {
     css: {
         extract: true,
         sourceMap: false,
-        loaderOptions:{
-            less: {
-                javascriptEnabled: true,
-            }
-        },
-        models: false,
+        // loaderOptions:{
+        //     less: {
+        //         javascriptEnabled: true,
+        //     }
+        // },
+        // models: true,
     },
     chainWebpack: config => {
         config.resolve.symlinks(true);
@@ -41,9 +41,9 @@ module.exports = {
             .set("@store", resolve("src/store"))
             .set("@components", resolve("src/components"));
 
-        require('vue-loader').merge(config, {
-            options: {},
-            plugins: ['less-loader'],
-        });
+        // require('vue-loader').merge(config, {
+        //     options: {},
+        //     plugins: ['less-loader'],
+        // });
     }
 }

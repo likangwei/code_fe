@@ -1,10 +1,10 @@
 <template>
     <el-row class="display">
         <el-col :span="24"  class="flex">
-            <el-col :span="12">
+            <el-col :span="12" class="autoScroll">
                 <Topic></Topic>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="12" class="autoScroll">
                 <Answer></Answer>
             </el-col>
         </el-col>
@@ -40,6 +40,6 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="stylus" scoped>
 @import "./codeBoard";
 </style>
