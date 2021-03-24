@@ -48,6 +48,7 @@
             return{
                 clientHeight: 0,
                 lang: 'python',
+                editor: null,
                 langList: [
                     {
                         label: 'Javascript',
@@ -82,15 +83,16 @@
         },
         mounted() {
             this.clientHeight = this.$refs.codeEdit.$el.clientHeight;
-            console.log(this.$refs.codeEdit.$el.clientHeight);
-            this.initEditor();
+            this.$nextTick(() => this.initEditor());
+
         },
         created() {
 
         },
         methods:{
             initEditor(){
-                let editor = CodeMirror.fromTextArea(this.$refs.code, {
+                let _ = this;
+                this.editor = CodeMirror.fromTextArea(this.$refs.code, {
                     mode: this.lang,//选择对应代码编辑器的语言，我这边选的是数据库，根据个人情况自行设置即可
                     indentWithTabs: true,
                     smartIndent: true,
@@ -109,11 +111,8 @@
                         }
                     }
                 });
-                editor.on('cursorActivity', function () {
-                    editor.showHint()
-                });
-                editor.setSize('auto',`${this.clientHeight}px`);
-                editor.setValue( `
+                this.editor.setSize('auto',`${this.clientHeight}px`);
+                this.editor.setValue( `
 //  代码示例：
 class counting_sort(object):
   def _counting_sort(self, alist, k):
@@ -134,6 +133,10 @@ class counting_sort(object):
       k = heapq.nlargest(1, sort_list)[0] + 1
     return self._counting_sort(sort_list, k)
                 `)
+                this.editor.on('cursorActivity', function () {
+                    _.editor.showHint();
+                });
+
             },
         }
     }

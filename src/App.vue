@@ -15,5 +15,7 @@ export default {
     margin: 0;
     padding: 0;
     height: 100%;
+    color: #333333;
+    font-size: 14px;
   }
 </style>
